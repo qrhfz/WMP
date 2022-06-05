@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import Track from "./track";
+import Song from "../models/song";
 
 export enum RepeatMode {
     False, One, Queue
 }
 
 export interface TrackQueueState {
-    mainQueue: Array<Track>,
-    sideQueue: Array<Track>,
+    mainQueue: Array<Song>,
+    sideQueue: Array<Song>,
     repeat: RepeatMode,
     random: boolean
 }
@@ -23,13 +23,13 @@ export const trackQueueSlice = createSlice({
     name: "trackQueue",
     initialState,
     reducers: {
-        push: (state, action: PayloadAction<Track>) => {
+        push: (state, action: PayloadAction<Song>) => {
             state.mainQueue.push(action.payload)
         },
-        pushPlay: (state, action: PayloadAction<Track>) => {
+        pushPlay: (state, action: PayloadAction<Song>) => {
             state.mainQueue.unshift(action.payload)
         },
-        pushAll: (state, action: PayloadAction<Array<Track>>) => {
+        pushAll: (state, action: PayloadAction<Array<Song>>) => {
             state.mainQueue.concat(action.payload)
         },
         popCurrent: state => {

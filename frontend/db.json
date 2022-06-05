@@ -1,27 +1,163 @@
 {
     "songs": [
         {
-            "album": "",
-            "audioURL": "/in_my_feelings.m4a",
+            "id": "f1f5e743-1b00-422b-a59d-577fcaab5142",
+            "audioURL": "songs/in_my_feelings.m4a",
             "title": "In my feelings",
+            "album": {
+                "id": "7fac0380-38e7-4016-851e-d9c8006db87b",
+                "title": "Scorpion",
+                "year": 2018
+            },
             "artists": [
-                "Drake"
+                {
+                    "id": "e0b990af-a6e0-4f69-a4bb-c30ca0cb6239",
+                    "name": "Drake"
+                }
             ]
         },
         {
-            "album": "",
-            "audioURL": "/colors.mp3",
+            "id": "b0ba6a3e-58a8-4eb2-bc6a-8ec70ad9b476",
+            "audioURL": "songs/colors.mp3",
             "title": "Colors",
+            "album": {
+                "id": "1cb60dcf-9695-4813-a685-57099890a477",
+                "title": "Badlands",
+                "year": 2015
+            },
             "artists": [
-                "Halsey"
+                {
+                    "id": "1048ac95-8e23-4e1a-960b-fe4b5e17cc7e",
+                    "name": "Halsey"
+                }
             ]
         },
         {
-            "album": "",
-            "audioURL": "/here_we_go.mp3",
+            "id": "6240fd3d-73ad-4c97-9289-22c3f3c24b94",
+            "audioURL": "songs/here_we_go.mp3",
             "title": "Here We Go",
+            "album": {
+                "id": "496c66f8-3132-48e9-b887-9d346cb2dd93",
+                "title": "Here We Go",
+                "year": 2019
+            },
             "artists": [
-                "Chric Classic"
+                {
+                    "id": "caf1a1ff-19e4-49b5-b053-91317ae7f7b6",
+                    "name": "Chris Classic"
+                }
+            ]
+        }
+    ],
+    "albums": [
+        {
+            "id": "7fac0380-38e7-4016-851e-d9c8006db87b",
+            "title": "Scorpion",
+            "year": 2018,
+            "songs": [
+                {
+                    "id": "f1f5e743-1b00-422b-a59d-577fcaab5142",
+                    "audioURL": "songs/in_my_feelings.m4a",
+                    "title": "In my feelings"
+                }
+            ],
+            "artists": [
+                {
+                    "id": "e0b990af-a6e0-4f69-a4bb-c30ca0cb6239",
+                    "name": "Drake"
+                }
+            ]
+        },
+        {
+            "id": "1cb60dcf-9695-4813-a685-57099890a477",
+            "title": "Badlands",
+            "year": 2015,
+            "songs": [
+                {
+                    "id": "b0ba6a3e-58a8-4eb2-bc6a-8ec70ad9b476",
+                    "audioURL": "songs/colors.mp3",
+                    "title": "Colors"
+                }
+            ],
+            "artists": [
+                {
+                    "id": "1048ac95-8e23-4e1a-960b-fe4b5e17cc7e",
+                    "name": "Halsey"
+                }
+            ]
+        },
+        {
+            "id": "496c66f8-3132-48e9-b887-9d346cb2dd93",
+            "title": "Here We Go",
+            "year": 2019,
+            "songs": [
+                {
+                    "id": "6240fd3d-73ad-4c97-9289-22c3f3c24b94",
+                    "audioURL": "songs/here_we_go.mp3",
+                    "title": "Here We Go"
+                }
+            ],
+            "artists": [
+                {
+                    "id": "caf1a1ff-19e4-49b5-b053-91317ae7f7b6",
+                    "name": "Chris Classic"
+                }
+            ]
+        }
+    ],
+    "artists": [
+        {
+            "id": "e0b990af-a6e0-4f69-a4bb-c30ca0cb6239",
+            "name": "Drake",
+            "songs": [
+                {
+                    "id": "7fac0380-38e7-4016-851e-d9c8006db87b",
+                    "title": "Scorpion",
+                    "year": 2018
+                }
+            ],
+            "albums": [
+                {
+                    "id": "7fac0380-38e7-4016-851e-d9c8006db87b",
+                    "title": "Scorpion",
+                    "year": 2018
+                }
+            ]
+        },
+        {
+            "id": "1048ac95-8e23-4e1a-960b-fe4b5e17cc7e",
+            "name": "Halsey",
+            "songs": [
+                {
+                    "id": "b0ba6a3e-58a8-4eb2-bc6a-8ec70ad9b476",
+                    "audioURL": "songs/colors.mp3",
+                    "title": "Colors"
+                }
+            ],
+            "albums": [
+                {
+                    "id": "1cb60dcf-9695-4813-a685-57099890a477",
+                    "title": "Badlands",
+                    "year": 2015
+                }
+            ]
+        },
+        {
+            "id": "caf1a1ff-19e4-49b5-b053-91317ae7f7b6",
+            "name": "Chris Classic",
+            "songs": [
+                {
+                    "id": "6240fd3d-73ad-4c97-9289-22c3f3c24b94",
+                    "audioURL": "songs/here_we_go.mp3",
+                    "title": "Here We Go"
+                }
+            ],
+            "albums": [
+                {
+                    "id": "496c66f8-3132-48e9-b887-9d346cb2dd93",
+                    "title": "Here We Go",
+                    "year": 2019
+                }
             ]
         }
     ]

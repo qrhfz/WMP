@@ -1,10 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { apiSlice } from './api/apiSlice'
 import trackQueueReducer from './track_queue/trackQueueSlice'
 
 export const store = configureStore({
     reducer: {
-        trackQueue: trackQueueReducer
+        trackQueue: trackQueueReducer,
+        [apiSlice.reducerPath]: apiSlice.reducer,
     },
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware().concat(apiSlice.middleware)
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../store"
-import Track from "../track_queue/track";
+import Song from "../models/song";
 import { next, clear, toggleRepeat, RepeatMode, toggleRandom } from "../track_queue/trackQueueSlice";
 
 export function Player() {
@@ -68,7 +68,7 @@ export function Player() {
         audio.volume = Number.parseInt(volume.value) / 100
     }
 
-    function currentSong(): Track | undefined {
+    function currentSong(): Song | undefined {
         return trackQueue.mainQueue[0]
     }
 
@@ -113,7 +113,7 @@ export function Player() {
 
                     <div className="flex-1">
                         <div>{currentSong()?.title}</div>
-                        <div>{currentSong()?.artists}</div>
+                        <div>{currentSong()?.artists?.[0].name ?? ''}</div>
 
                     </div>
 
