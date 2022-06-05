@@ -1,7 +1,7 @@
 from typing import List, Union
 
 from fastapi import FastAPI
-from models.extensions import AlbumExtended as Album, ArtistExtended as Artist, SongExtended as Song
+from schemas.extensions import AlbumExtended as Album, ArtistExtended as Artist, SongExtended as Song
 app = FastAPI()
 
 

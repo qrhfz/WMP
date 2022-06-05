@@ -1,9 +1,9 @@
 from typing import List, Union
 
 from pydantic import BaseModel
-from models.core import Album
-from models.core import Artist
-from models.core import Song
+from schemas.core import Album
+from schemas.core import Artist
+from schemas.core import Song
 
 
 class AlbumExtended(BaseModel):
