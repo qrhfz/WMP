@@ -14,11 +14,22 @@ export const apiSlice = createApi({
 
             query: () => '/albums'
         }),
-        getArtist: builder.query<Array<Artist>, void>({
+        getAlbumDetail: builder.query<Album, string>({
+
+            query: (id) => `/albums/${id}`
+        }),
+        getArtists: builder.query<Array<Artist>, void>({
 
             query: () => '/artists'
-        })
+        }),
+        getArtistDetail: builder.query<Artist, string>({
+
+            query: (id) => `/artists/${id}`
+        }),
     })
 })
 
-export const { useGetSongsQuery, useGetAlbumsQuery, useGetArtistQuery } = apiSlice
+export const {
+    useGetSongsQuery, useGetAlbumsQuery, useGetArtistsQuery,
+    useGetAlbumDetailQuery, useGetArtistDetailQuery
+} = apiSlice

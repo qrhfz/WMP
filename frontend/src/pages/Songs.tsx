@@ -18,7 +18,7 @@ export const Songs = () => {
     return <div>
 
         {tracks.map((track: Song) => {
-            return <SongItem track={track}></SongItem>
+            return <SongItem track={track} key={track.id}></SongItem>
         })}
     </div>
 }
