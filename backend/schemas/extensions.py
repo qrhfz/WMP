@@ -13,12 +13,18 @@ class AlbumExtended(BaseModel):
     songs: List[Song] = []
     artists: List[Artist] = []
 
+    class Config:
+        orm_mode = True
+
 
 class ArtistExtended(BaseModel):
     id: str
     name: str
     albums: List[Album] = []
     songs: List[Song] = []
+
+    class Config:
+        orm_mode = True
 
 
 class SongExtended(BaseModel):
@@ -27,3 +33,6 @@ class SongExtended(BaseModel):
     year: int
     album: Union[Album, None]
     artists: List[Artist] = []
+
+    class Config:
+        orm_mode = True
