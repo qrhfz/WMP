@@ -1,4 +1,5 @@
 import { useGetAlbumsQuery } from "../api/apiSlice"
+import randomColor from "../utils/randomColor"
 
 export const Albums = () => {
 
@@ -20,7 +21,7 @@ export const Albums = () => {
                         <strong>{album.title}</strong>
                         <div>
                             {album.artists?.map(artist => (
-                                <span>{artist.name}</span>
+                                <span className="pr-1">{artist.name}</span>
                             ))}
                         </div>
                     </div>
@@ -30,10 +31,3 @@ export const Albums = () => {
     )
 }
 
-function randomColor() {
-    const hue = Math.floor(Math.random() * 360).toString()
-    const saturation = "80%"
-    const lightness = "80%"
-
-    return `hsl(${hue}, ${saturation}, ${lightness})`
-}
