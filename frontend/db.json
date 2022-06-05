@@ -1,0 +1,28 @@
+{
+    "songs": [
+        {
+            "album": "",
+            "audioURL": "/in_my_feelings.m4a",
+            "title": "In my feelings",
+            "artists": [
+                "Drake"
+            ]
+        },
+        {
+            "album": "",
+            "audioURL": "/colors.mp3",
+            "title": "Colors",
+            "artists": [
+                "Halsey"
+            ]
+        },
+        {
+            "album": "",
+            "audioURL": "/here_we_go.mp3",
+            "title": "Here We Go",
+            "artists": [
+                "Chric Classic"
+            ]
+        }
+    ]
+}
