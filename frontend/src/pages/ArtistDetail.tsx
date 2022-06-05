@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { useGetArtistDetailQuery } from "../api/apiSlice"
+import { ColoredSquareTile } from "../components/ColoredSquareTile";
 import { SongItem } from "../components/SongItem";
-import randomColor from "../utils/randomColor";
+
 
 export function ArtistDetail() {
     let { id } = useParams();
@@ -17,17 +18,14 @@ export function ArtistDetail() {
                     {artist?.albums?.map(album => {
                         return (
                             <Link to={`/albums/${album.id}`} key={album.id}>
-                                <div
-                                    className="p-2 aspect-square"
-
-                                    style={{ backgroundColor: randomColor() }}>
+                                <ColoredSquareTile id={album.id}>
                                     <strong>{album.title}</strong>
                                     <div>
                                         {album.artists?.map(artist => (
                                             <span className="pr-1" key={artist.id}>{artist.name}</span>
                                         ))}
                                     </div>
-                                </div>
+                                </ColoredSquareTile>
                             </Link>
 
                         )

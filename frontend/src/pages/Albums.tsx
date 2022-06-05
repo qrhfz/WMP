@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useGetAlbumsQuery } from "../api/apiSlice"
-import randomColor from "../utils/randomColor"
+import { ColoredSquareTile } from "../components/ColoredSquareTile"
+
 
 export const Albums = () => {
 
@@ -17,17 +18,16 @@ export const Albums = () => {
                 {albums?.map(album => {
                     return (
                         <Link to={`/albums/${album.id}`} key={album.id}>
-                            <div
-                                className="p-2 aspect-square"
-
-                                style={{ backgroundColor: randomColor() }}>
-                                <strong>{album.title}</strong>
+                            <ColoredSquareTile id={album.id}>
                                 <div>
-                                    {album.artists?.map(artist => (
-                                        <span className="pr-1" key={artist.id}>{artist.name}</span>
-                                    ))}
+                                    <strong>{album.title}</strong>
+                                    <div>
+                                        {album.artists?.map(artist => (
+                                            <span className="pr-1" key={artist.id}>{artist.name}</span>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            </ColoredSquareTile>
                         </Link>
 
                     )

@@ -5,3 +5,4 @@ export default function randomColor() {
 
     return `hsl(${hue}, ${saturation}, ${lightness})`
 }
+

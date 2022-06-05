@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useGetArtistsQuery } from "../api/apiSlice"
-import randomColor from "../utils/randomColor"
+import { ColoredSquareTile } from "../components/ColoredSquareTile"
 
 export const Artists = () => {
     const { data: artists, isLoading } = useGetArtistsQuery()
@@ -15,12 +15,9 @@ export const Artists = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-black text-2xl">
                 {artists?.map(artist => (
                     <Link to={`/artists/${artist.id}`} key={artist.id}>
-                        <div
-                            className="p-2 aspect-square flex justify-center items-center"
-
-                            style={{ backgroundColor: randomColor() }}>
+                        <ColoredSquareTile id={artist.id}>
                             <strong>{artist.name}</strong>
-                        </div>
+                        </ColoredSquareTile>
                     </Link>
                 ))}
             </div>
