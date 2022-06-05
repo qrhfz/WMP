@@ -4,7 +4,7 @@ import Artist from "./artist"
 export default interface Song {
     id: string,
     title: string
-    audioURL: string
+    audioUrl: string
     album?: Album
     artists?: Array<Artist>
 }

@@ -55,4 +55,4 @@ class Song(Base):
 class Artist(Base):
     __tablename__ = 'artist'
     id = Column(String(36), primary_key=True)
-    title = Column(String)
+    name = Column(String)

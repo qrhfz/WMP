@@ -5,6 +5,7 @@ class Song(BaseModel):
     id: str
     title: str
     year: int
+    audioUrl: str
 
     class Config:
         orm_mode = True

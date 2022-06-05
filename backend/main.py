@@ -1,14 +1,29 @@
-from typing import List, Union
+from typing import List
 
 from fastapi import Depends, FastAPI
 from services.album import AlbumService
-from models.database import SessionLocal, Base, engine
+from services.song import SongService
+from services.artist import ArtistService
+from models.database import Base, engine
 from schemas.extensions import AlbumExtended as Album, ArtistExtended as Artist, SongExtended as Song
-from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -27,20 +42,20 @@ def get_album_byid(id: str, service: AlbumService = Depends(AlbumService)):
 
 
 @app.get("/artists", response_model=List[Artist])
-def get_artists():
-    pass
+def get_artists(service: ArtistService = Depends(ArtistService)):
+    return service.get_artists()
 
 
 @app.get("/artists/{id}", response_model=Artist)
-def get_artist_byid(id: str):
-    pass
+def get_artist_byid(id: str, service: ArtistService = Depends(ArtistService)):
+    return service.get_artist_byid(id)
 
 
 @app.get("/songs", response_model=List[Song])
-def get_songs():
-    pass
+def get_songs(service: SongService = Depends(SongService)):
+    return service.get_songs()
 
 
 @app.get("/songs/{id}", response_model=Song)
-def get_song_byid(id: str):
-    pass
+def get_song_byid(id: str, service: SongService = Depends(SongService)):
+    return service.get_song_byid(id)

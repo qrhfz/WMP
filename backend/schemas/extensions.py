@@ -31,6 +31,7 @@ class SongExtended(BaseModel):
     id: str
     title: str
     year: int
+    audioUrl: str
     album: Union[Album, None]
     artists: List[Artist] = []
 
