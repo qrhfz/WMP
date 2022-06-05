@@ -12,7 +12,7 @@ export const Albums = () => {
     return (
         <div>
             <h2>Album</h2>
-            <div className="grid grid-cols-3 gap-2 text-black text-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-black text-2xl">
                 {albums?.map(album => (
                     <div
                         className="p-2 aspect-square"
