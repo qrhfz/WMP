@@ -1,6 +1,6 @@
 import { memoize } from "./memo";
 
-function _hashColor(s: string): string {
+function hashColor(s: string): string {
     function hash(s: string): number {
         let hash = 0, i, chr;
         if (s.length === 0) return hash;
@@ -18,4 +18,6 @@ function _hashColor(s: string): string {
     return `hsl(${hue}, ${saturation}, ${lightness})`
 }
 
-export const hashColor = memoize(_hashColor)
+const memoizedHashColor = memoize(hashColor)
+
+export { memoizedHashColor as hashColor }
