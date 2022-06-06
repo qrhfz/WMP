@@ -1,12 +1,18 @@
 from typing import List
 
 from fastapi import Depends, FastAPI
+from fastapi.staticfiles import StaticFiles
 from services.album import AlbumService
 from services.song import SongService
 from services.artist import ArtistService
 from models.database import Base, engine
 from schemas.extensions import AlbumExtended as Album, ArtistExtended as Artist, SongExtended as Song
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+MEDIA_DIR = os.getenv('MEDIA_DIR')
 
 Base.metadata.create_all(bind=engine)
 
@@ -24,6 +30,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/media", StaticFiles(directory=MEDIA_DIR), name="media")
 
 
 @app.get("/")
