@@ -11,11 +11,10 @@ export const Artists = () => {
 
     return (
         <div>
-            <h2>Artists</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-black text-2xl">
                 {artists?.map(artist => (
                     <Link to={`/artists/${artist.id}`} key={artist.id}>
-                        <ColoredSquareTile id={artist.id}>
+                        <ColoredSquareTile id={artist.name}>
                             <strong>{artist.name}</strong>
                         </ColoredSquareTile>
                     </Link>

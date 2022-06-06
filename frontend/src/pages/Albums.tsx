@@ -13,12 +13,11 @@ export const Albums = () => {
 
     return (
         <div>
-            <h2>Album</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-black text-2xl">
                 {albums?.map(album => {
                     return (
                         <Link to={`/albums/${album.id}`} key={album.id}>
-                            <ColoredSquareTile id={album.id}>
+                            <ColoredSquareTile id={album.title}>
                                 <div>
                                     <strong>{album.title}</strong>
                                     <div>
