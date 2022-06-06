@@ -4,7 +4,7 @@ import Artist from '../models/artist'
 import Song from '../models/song'
 
 export const apiSlice = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api' }),
     endpoints: builder => ({
         getSongs: builder.query<Array<Song>, void>({
 
