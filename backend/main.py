@@ -7,7 +7,7 @@ from services.album import AlbumService
 from services.song import SongService
 from services.artist import ArtistService
 from models.database import Base, engine
-from schemas.extensions import AlbumExtended, ArtistExtended, SongExtended
+from schemas.extensions import AlbumDetail, ArtistDetail, SongDetail
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
@@ -45,7 +45,7 @@ def get_albums(service: AlbumService = Depends(AlbumService)):
     return service.get_albums()
 
 
-@ app.get("/albums/{id}", response_model=AlbumExtended)
+@ app.get("/albums/{id}", response_model=AlbumDetail)
 def get_album_byid(id: str, service: AlbumService = Depends(AlbumService)):
     return service.get_album_byid(id)
 

@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from utils import flatten, unique
 from models.database import get_db
 from models.core import Album, Song, Artist
-from schemas.extensions import AlbumExtended
+from schemas.extensions import AlbumDetail
 
 
 class AlbumService:
@@ -13,17 +13,17 @@ class AlbumService:
     def get_albums(self):
         return self.db.query(Album).all()
 
-    def get_album_byid(self, id: str) -> AlbumExtended:
+    def get_album_byid(self, id: str) -> AlbumDetail:
         album = self.db.query(Album).join(
             Song).filter(Album.id == id).first()
 
-        return AlbumExtended(
+        return AlbumDetail(
             id=album.id, title=album.title,
             year=album.year, songs=album.songs,
             artists=unique(flatten(album.artists))
         )
 
-    def insert_album(self, album: AlbumExtended):
+    def insert_album(self, album: AlbumDetail):
         db_album = Album(id="", title=album.title, year=album.year)
         self.db.add(db_album)
         self.db.commit()

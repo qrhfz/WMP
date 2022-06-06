@@ -6,7 +6,7 @@ from schemas.core import Artist
 from schemas.core import Song
 
 
-class AlbumExtended(BaseModel):
+class AlbumDetail(BaseModel):
     id: str
     title: str
     year: int
@@ -17,7 +17,7 @@ class AlbumExtended(BaseModel):
         orm_mode = True
 
 
-class ArtistExtended(BaseModel):
+class ArtistDetail(BaseModel):
     id: str
     name: str
     albums: List[Album] = []
@@ -27,7 +27,7 @@ class ArtistExtended(BaseModel):
         orm_mode = True
 
 
-class SongExtended(BaseModel):
+class SongDetail(BaseModel):
     id: str
     title: str
     year: int
