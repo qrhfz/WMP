@@ -1,0 +1,6 @@
+def flatten(xss):
+    return [x for xs in xss for x in xs]
+
+
+def unique(i):
+    return list(set(i))

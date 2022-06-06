@@ -2,11 +2,12 @@ from typing import List
 
 from fastapi import Depends, FastAPI
 from fastapi.staticfiles import StaticFiles
+from schemas.core import Album, Artist, Song
 from services.album import AlbumService
 from services.song import SongService
 from services.artist import ArtistService
 from models.database import Base, engine
-from schemas.extensions import AlbumExtended as Album, ArtistExtended as Artist, SongExtended as Song
+from schemas.extensions import AlbumExtended, ArtistExtended, SongExtended
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
@@ -44,26 +45,26 @@ def get_albums(service: AlbumService = Depends(AlbumService)):
     return service.get_albums()
 
 
-@app.get("/albums/{id}", response_model=Album)
+@ app.get("/albums/{id}", response_model=AlbumExtended)
 def get_album_byid(id: str, service: AlbumService = Depends(AlbumService)):
     return service.get_album_byid(id)
 
 
-@app.get("/artists", response_model=List[Artist])
+@ app.get("/artists", response_model=List[Artist])
 def get_artists(service: ArtistService = Depends(ArtistService)):
     return service.get_artists()
 
 
-@app.get("/artists/{id}", response_model=Artist)
+@ app.get("/artists/{id}", response_model=Artist)
 def get_artist_byid(id: str, service: ArtistService = Depends(ArtistService)):
     return service.get_artist_byid(id)
 
 
-@app.get("/songs", response_model=List[Song])
+@ app.get("/songs", response_model=List[Song])
 def get_songs(service: SongService = Depends(SongService)):
     return service.get_songs()
 
 
-@app.get("/songs/{id}", response_model=Song)
+@ app.get("/songs/{id}", response_model=Song)
 def get_song_byid(id: str, service: SongService = Depends(SongService)):
     return service.get_song_byid(id)
