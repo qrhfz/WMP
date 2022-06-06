@@ -55,7 +55,7 @@ def get_artists(service: ArtistService = Depends(ArtistService)):
     return service.get_artists()
 
 
-@ app.get("/artists/{id}", response_model=Artist)
+@ app.get("/artists/{id}", response_model=ArtistDetail)
 def get_artist_byid(id: str, service: ArtistService = Depends(ArtistService)):
     return service.get_artist_byid(id)
 
@@ -65,6 +65,6 @@ def get_songs(service: SongService = Depends(SongService)):
     return service.get_songs()
 
 
-@ app.get("/songs/{id}", response_model=Song)
+@ app.get("/songs/{id}", response_model=SongDetail)
 def get_song_byid(id: str, service: SongService = Depends(SongService)):
     return service.get_song_byid(id)

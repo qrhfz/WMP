@@ -58,6 +58,7 @@ class Artist(Base):
     __tablename__ = 'artist'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    albums = association_proxy("songs", "album")
 
 
 class Genre(Base):

@@ -1,4 +1,6 @@
 from fastapi import Depends
+from schemas.extensions import ArtistDetail
+from utils import flatten, unique
 from models.core import Artist
 from sqlalchemy.orm import Session
 
@@ -13,4 +15,5 @@ class ArtistService:
         return self.db.query(Artist).all()
 
     def get_artist_byid(self, id: str):
-        return self.db.query(Artist).filter(Artist.id == id).first()
+        artist = self.db.query(Artist).filter(Artist.id == id).first()
+        return ArtistDetail(id=artist.id, name=artist.name, songs=artist.songs, albums=unique(artist.albums))
