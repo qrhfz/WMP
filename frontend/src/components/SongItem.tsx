@@ -6,7 +6,7 @@ export const SongItem = ({ track }: { track: Song }) => {
     const dispatch = useDispatch()
     return <div
         className="pb-2 border-b-2 mb-2 flex flex-row"
-        key={track.audioURL} >
+        key={track.audioUrl} >
         <i className='bx bx-play-circle text-4xl p-2'
             onClick={() => {
                 dispatch(pushPlay(track))
