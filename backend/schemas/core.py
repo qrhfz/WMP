@@ -26,3 +26,11 @@ class Artist(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class Genre(BaseModel):
+    id: str
+    name: str
+
+    class Config:
+        orm_mode = True

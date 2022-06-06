@@ -37,3 +37,12 @@ class SongExtended(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class GenreExtended(BaseModel):
+    id: str
+    name: str
+    songs: List[Song] = []
+
+    class Config:
+        orm_mode = True

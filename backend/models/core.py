@@ -5,30 +5,14 @@ from sqlalchemy.orm import relationship
 
 class Album(Base):
     __tablename__ = 'album'
-    id = Column(String(36), primary_key=True)
+    id = Column(Integer, primary_key=True)
     title = Column(String)
     year = Column(Integer)
-    artists = relationship(
-        "Artist",
-        secondary=Table(
-            'album_artist',
-            Base.metadata,
-            Column(
-                "album_id",
-                Integer, ForeignKey('album.id'),
-                primary_key=True),
-            Column(
-                "artist_id",
-                Integer, ForeignKey('artist.id'),
-                primary_key=True)
-        ),
-        backref="albums"
-    )
 
 
 class Song(Base):
     __tablename__ = 'song'
-    id = Column(String(36), primary_key=True)
+    id = Column(Integer, primary_key=True)
     title = Column(String)
     audioUrl = Column(String)
     year = Column(Integer)
@@ -50,9 +34,31 @@ class Song(Base):
         ),
         backref="songs"
     )
+    genres = relationship(
+        "Genre",
+        secondary=Table(
+            'song_genre',
+            Base.metadata,
+            Column(
+                "song_id",
+                Integer, ForeignKey('song.id'),
+                primary_key=True),
+            Column(
+                "genre_id",
+                Integer, ForeignKey('genre.id'),
+                primary_key=True)
+        ),
+        backref="songs"
+    )
 
 
 class Artist(Base):
     __tablename__ = 'artist'
-    id = Column(String(36), primary_key=True)
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+
+class Genre(Base):
+    __tablename__ = 'genre'
+    id = Column(Integer, primary_key=True)
     name = Column(String)
