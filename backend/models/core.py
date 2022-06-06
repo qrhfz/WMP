@@ -1,6 +1,7 @@
 from .database import Base
 from sqlalchemy import Column, ForeignKey, String, Integer, Table
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.associationproxy import association_proxy
 
 
 class Album(Base):
@@ -8,6 +9,7 @@ class Album(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     year = Column(Integer)
+    artists = association_proxy("songs", "artists")
 
 
 class Song(Base):
@@ -17,7 +19,7 @@ class Song(Base):
     audioUrl = Column(String)
     year = Column(Integer)
     album_id = Column(Integer, ForeignKey('album.id'))
-    album = relationship("Album")
+    album = relationship("Album", backref="songs")
     artists = relationship(
         "Artist",
         secondary=Table(

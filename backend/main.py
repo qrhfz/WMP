@@ -46,7 +46,7 @@ def get_albums(service: AlbumService = Depends(AlbumService)):
 
 @app.get("/albums/{id}", response_model=Album)
 def get_album_byid(id: str, service: AlbumService = Depends(AlbumService)):
-    return service.get_albums_byid(id)
+    return service.get_album_byid(id)
 
 
 @app.get("/artists", response_model=List[Artist])
