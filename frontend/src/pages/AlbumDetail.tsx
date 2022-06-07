@@ -13,13 +13,13 @@ export function AlbumDetail() {
             <div>
                 {album?.artists?.map((artist, index) => {
                     return (
-                        <>
-                            <Link to={`/artists/${artist.id}`} key={artist.id} className="text-green-700 hover:text-green-500">
+                        <span key={artist.id}>
+                            <Link to={`/artists/${artist.id}`} className="text-green-700 hover:text-green-500">
                                 {artist.name}
                             </Link>
                             {(index !== (album?.artists?.length ?? 0) - 1) && ', '}
 
-                        </>
+                        </span>
                     )
                 })}
             </div>
