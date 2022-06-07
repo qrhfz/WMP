@@ -32,7 +32,7 @@ class Song(BaseModel):
     id: str
     title: str
     year: int
-    file: str = Field(alias='audioUrl')
+    file: str
     artists: List[Artist] = []
 
     @validator('file')

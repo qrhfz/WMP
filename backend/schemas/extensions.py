@@ -31,7 +31,7 @@ class SongDetail(BaseModel):
     id: str
     title: str
     year: int
-    audioUrl: str
+    file: str
     album: Union[Album, None]
     artists: List[Artist] = []
 
