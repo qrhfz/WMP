@@ -6,7 +6,7 @@ export default interface Song {
     title: string
     file: string
     album?: Album
-    artists?: Array<Artist>
+    artists: Array<Artist>
 }
 
 
