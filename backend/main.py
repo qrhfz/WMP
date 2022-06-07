@@ -2,9 +2,10 @@ from typing import List
 from dotenv import load_dotenv
 import os
 
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
 
 from models.database import Base, engine
 import routes
@@ -16,6 +17,7 @@ FRONTEND_DIR = os.getenv('FRONTEND_DIR')
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+templates = Jinja2Templates(directory=FRONTEND_DIR)
 
 origins = [
     "http://localhost:3000",
@@ -35,4 +37,9 @@ app.include_router(routes.router)
 
 
 app.mount("/media", StaticFiles(directory=MEDIA_DIR), name="media")
-app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
+app.mount("/assets", StaticFiles(directory=FRONTEND_DIR+"/assets"), name="assets")
+
+
+@app.get("/{full_path:path}")
+def catch_all(full_path: str, request: Request, ):
+    return templates.TemplateResponse("index.html", {"request": request})

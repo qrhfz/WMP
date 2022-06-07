@@ -36,7 +36,7 @@ class Song(BaseModel):
 
     @validator('file')
     def format_filename(cls, v):
-        return "/media/"+v
+        return "http://localhost:8000/media/"+v
 
     class Config:
         orm_mode = True
