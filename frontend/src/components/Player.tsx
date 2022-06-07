@@ -93,7 +93,7 @@ export function Player() {
                 onPause={() => setPlaying(false)}
                 onPlay={() => setPlaying(true)}
                 onEnded={() => dispatch(next())}
-                src={currentSong()?.audioUrl}
+                src={currentSong()?.file}
             ></audio>
             <div className="border-2 p-2">
                 <div className="flex flex-row">

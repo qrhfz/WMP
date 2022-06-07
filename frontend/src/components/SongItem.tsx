@@ -6,7 +6,7 @@ export const SongItem = ({ track }: { track: Song }) => {
     const dispatch = useDispatch()
     return <div
         className="pb-2 border-b-2 mb-2 flex flex-row"
-        key={track.audioUrl} >
+        key={track.file} >
         <i className='bx bx-play-circle text-4xl p-2'
             onClick={() => {
                 dispatch(pushPlay(track))
@@ -14,7 +14,7 @@ export const SongItem = ({ track }: { track: Song }) => {
         ></i>
         <div>
             <div className='text-lg'>{track.title}</div>
-            <div className='text-sm'>{track.artists?.[0].name}</div>
+            <div className='text-sm'>{track.artists && track.artists[0].name}</div>
         </div>
         <div className='flex-1'></div>
         <i className='bx bxs-add-to-queue text-2xl p-2'

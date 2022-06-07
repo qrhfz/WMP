@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, List
 from pydantic import BaseModel, Field, validator
 
 
@@ -28,6 +28,7 @@ class Genre(BaseModel):
 
 
 class Song(BaseModel):
+
     id: str
     title: str
     year: int
@@ -36,7 +37,11 @@ class Song(BaseModel):
 
     @validator('file')
     def format_filename(cls, v):
-        return "http://localhost:8000/media/"+v
+        prefix = "http://localhost:8000/media/"
+        if v.startswith(prefix) == False:
+            return "http://localhost:8000/media/"+v
+
+        return v
 
     class Config:
         orm_mode = True
