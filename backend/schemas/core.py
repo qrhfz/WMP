@@ -1,5 +1,5 @@
 from typing import List
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, validator
 
 
 class Album(BaseModel):
@@ -31,8 +31,13 @@ class Song(BaseModel):
     id: str
     title: str
     year: int
-    audioUrl: str
+    file: str = Field(alias='audioUrl')
     artists: List[Artist] = []
+
+    @validator('file')
+    def format_filename(cls, v):
+        return "/media/"+v
 
     class Config:
         orm_mode = True
+        allow_population_by_field_name = True

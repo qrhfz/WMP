@@ -14,16 +14,11 @@ class AlbumService:
         return self.db.query(Album).all()
 
     def get_album_byid(self, id: str) -> AlbumDetail:
-        album = self.db.query(Album).join(
-            Song).filter(Album.id == id).first()
+        album = self.db.query(Album).join(Song).filter(Album.id == id).first()
 
-        return AlbumDetail(
-            id=album.id, title=album.title,
-            year=album.year, songs=album.songs,
-            artists=unique(flatten(album.artists))
-        )
+        return AlbumDetail(**album.__dict__, artists=unique(flatten(album.artists)))
 
     def insert_album(self, album: AlbumDetail):
-        db_album = Album(id="", title=album.title, year=album.year)
+        db_album = Album(title=album.title, year=album.year)
         self.db.add(db_album)
         self.db.commit()

@@ -14,9 +14,10 @@ class Album(Base):
 
 class Song(Base):
     __tablename__ = 'song'
+
     id = Column(Integer, primary_key=True)
     title = Column(String)
-    audioUrl = Column(String)
+    file = Column(String)
     year = Column(Integer)
     album_id = Column(Integer, ForeignKey('album.id'))
     album = relationship("Album", backref="songs")
