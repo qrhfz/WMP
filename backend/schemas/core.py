@@ -1,5 +1,6 @@
 from typing import Any, List
 from pydantic import BaseModel, Field, validator
+from config import BASE_URL
 
 
 class Album(BaseModel):
@@ -37,9 +38,9 @@ class Song(BaseModel):
 
     @validator('file')
     def format_filename(cls, v):
-        prefix = "http://localhost:8000/media/"
-        if v.startswith(prefix) == False:
-            return "http://localhost:8000/media/"+v
+        media_root = BASE_URL+"/media/"
+        if v.startswith(media_root) == False:
+            return media_root+v
 
         return v
 

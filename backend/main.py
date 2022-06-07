@@ -1,18 +1,15 @@
 from typing import List
-from dotenv import load_dotenv
-import os
+
 
 from fastapi import Depends, FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
+from config import FRONTEND_DIR, MEDIA_DIR
 
 from models.database import Base, engine
 import routes
 
-load_dotenv()
-MEDIA_DIR = os.getenv('MEDIA_DIR')
-FRONTEND_DIR = os.getenv('FRONTEND_DIR')
 
 Base.metadata.create_all(bind=engine)
 
