@@ -12,20 +12,23 @@ export const SongItem = ({ track }: { track: Song }) => {
     }
 
     function inQueue(): boolean {
-        return trackQueue.mainQueue.includes(track) || trackQueue.sideQueue.includes(track)
+        return trackQueue.mainQueue.includes(track)
     }
 
     return <div
         className="pb-2 border-b-2 mb-2 flex flex-row"
         key={track.file} >
-        <i className={`bx bx-play-circle text-4xl p-2 ${isPlaying() && 'text-green-500'}`}
-            onClick={() => {
-                if (isPlaying()) return
-                dispatch(pushPlay(track))
-            }}
-        ></i>
+
         <div>
-            <div className='text-lg'>{track.title}</div>
+            <div
+                style={{ cursor: "pointer" }}
+                className={`text-lg hover:text-green-500 ${isPlaying() && "text-green-700"}`}
+                onClick={() => {
+                    if (isPlaying()) return
+                    dispatch(pushPlay(track))
+                }}>
+                {track.title}
+            </div>
             <div className='text-sm'>
                 {track.artists.map((artist, index, arr) => {
                     return <Link
