@@ -42,7 +42,7 @@ export const SongItem = ({ track }: { track: Song }) => {
             </div>
         </div>
         <div className='flex-1'></div>
-        <i className={`bx text-2xl p-2 ${inQueue() ? "bxs-check-circle" : "bxs-add-to-queue"}`}
+        <i className={`bx text-2xl p-2 ${inQueue() ? "bx bx-check-double" : "bxs-add-to-queue"}`}
             onClick={() => {
                 if (inQueue()) return
                 dispatch(push(track))
