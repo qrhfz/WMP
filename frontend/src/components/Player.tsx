@@ -56,7 +56,9 @@ export function Player() {
     function seek() {
         const audio = audioRef.current
         if (!audio) return
-        audio.fastSeek(Number.parseInt(sliderRef.current?.value ?? ""))
+        const current = Number.parseInt(sliderRef.current?.value ?? "0")
+        audio.currentTime = current
+
     }
 
     function changeVol() {
