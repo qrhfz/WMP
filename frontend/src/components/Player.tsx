@@ -84,7 +84,7 @@ export function Player() {
 
 
     return (
-        (currentSong()) ? <>
+        (currentSong()) ? <div className="fixed bottom-0 w-full">
 
             <audio
                 loop={trackQueue.repeat == RepeatMode.One}
@@ -95,48 +95,51 @@ export function Player() {
                 onEnded={() => dispatch(next())}
                 src={currentSong()?.file}
             ></audio>
-            <div className="border-2 p-2">
-                <div className="flex flex-row items-center gap-4">
-                    <div>
-                        <div>{currentSong()?.title}</div>
-                        <div>{currentSong()?.artists?.[0].name ?? ''}</div>
+            <div className="flex flex-col md:flex-row items-center gap-4 border-t-2 p-2">
+                <div className="whitespace-nowrap md:w-64">
+                    <div className="inline md:block">{currentSong()?.title}</div>
+                    <div className="inline md:hidden"> | </div>
+                    <div className="inline md:block">{currentSong()?.artists?.[0].name ?? ''}</div>
 
-                    </div>
-                    <div className=' flex flex-row w-min gap-0'>
-                        <i className={`text-3xl bx ${isPlaying ? 'bx-pause' : 'bx-play'}`} onClick={togglePlay}></i>
-                        <i className='text-3xl bx bx-stop' onClick={stop}></i>
-                        <i className='text-3xl bx bx-skip-next' onClick={() => dispatch(next())}></i>
-                        <i className='text-3xl bx bx-repeat' onClick={() => dispatch(toggleRepeat())}></i>
-                        {(trackQueue.repeat == RepeatMode.One) && <span>1</span>}
-                        {(trackQueue.repeat == RepeatMode.False) && <span>x</span>}
-                        {(trackQueue.repeat == RepeatMode.Queue) && <span>q</span>}
-                        <i className={`text-3xl bx bx-shuffle ${trackQueue.random && 'text-green-400'}`} onClick={() => dispatch(toggleRandom())}></i>
-                    </div>
-                    <input
-                        type="range"
-                        max={(audioRef.current?.duration ?? 0).toString()}
-                        min="0"
-                        value={audioRef.current?.currentTime ?? 0}
-                        onInput={seek}
-                        ref={sliderRef}
-                        className="flex-grow"
-                    />
-                    <div>{timer}</div>
-
-                    <div className="relative volume-container flex flex-col justify-center">
-                        <div className="absolute w-min volume-bar pl-8">
-                            <input type="range" min="0" max="100" ref={volumeRef} onInput={changeVol} />
+                </div>
+                <input
+                    type="range"
+                    max={(audioRef.current?.duration ?? 0).toString()}
+                    min="0"
+                    value={audioRef.current?.currentTime ?? 0}
+                    onInput={seek}
+                    ref={sliderRef}
+                    className="w-full"
+                />
+                <div className="hidden md:block">{timer}</div>
+                <div className=' flex flex-row w-min gap-4'>
+                    <i className={`text-3xl bx ${isPlaying ? 'bx-pause' : 'bx-play'}`} onClick={togglePlay}></i>
+                    <i className='text-3xl bx bx-stop' onClick={stop}></i>
+                    <i className='text-3xl bx bx-skip-next' onClick={() => dispatch(next())}></i>
+                    <div className={`relative ${(trackQueue.repeat !== RepeatMode.False) && "text-green-700"}`}>
+                        <i className="text-3xl bx bx-repeat"
+                            onClick={() => dispatch(toggleRepeat())}></i>
+                        <div className="absolute top-[-0.5rem] right-[-0.5rem] text-sm">
+                            {(trackQueue.repeat == RepeatMode.One) && "1"}
+                            {(trackQueue.repeat == RepeatMode.Queue) && <i className='bx bx-refresh'></i>}
                         </div>
-                        <i className={`text-xl bx ${isMuted ? 'bxs-volume-mute' : 'bxs-volume'} rotate-90`} onClick={toggleMute}></i>
-
-
                     </div>
+
+
+                    <i className={`text-3xl bx bx-shuffle ${trackQueue.random && 'text-green-700'}`} onClick={() => dispatch(toggleRandom())}></i>
                 </div>
 
 
+
+                <div className="hidden relative volume-container md:flex flex-col justify-center  ">
+                    <div className="absolute w-min volume-bar pl-8">
+                        <input type="range" min="0" max="100" ref={volumeRef} onInput={changeVol} />
+                    </div>
+                    <i className={`text-xl bx ${isMuted ? 'bxs-volume-mute' : 'bxs-volume'} rotate-90`} onClick={toggleMute}></i>
+                </div>
             </div>
 
-        </> : <></>
+        </div> : <></>
 
     )
 }
